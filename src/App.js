@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import queryString from 'query-string';
+// import queryString from 'query-string';
+const queryString = require('query-string');
 
 class PlaylistCounter extends Component {
   render() {
@@ -107,7 +108,7 @@ class App extends Component {
 
     if(!accessToken)
       return;
-      
+
     fetch('https://api.spotify.com/v1/me', {
       headers: {'Authorization': 'Bearer ' + accessToken}
     })
@@ -122,11 +123,12 @@ class App extends Component {
     })
       .then((response) => response.json())
       .then(data => this.setState({
+            
              playlists: data.items.map(item => ({
                 name: item.name,
                 imageUrl: item.images[0].url,
                 songs: []
-              }))
+              })) 
       }))
 
     // setTimeout(() => {
