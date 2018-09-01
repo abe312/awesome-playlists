@@ -196,7 +196,7 @@ class App extends Component {
             
             window.location = window.location.href.includes('localhost')
               ? 'http://localhost:8888/login'
-              : 'https://awesome-playlists-backend.herokuapps.com/login'
+              : 'https://awesome-playlists-backend.herokuapp.com/login'
             }}
              className="btn__spotify">Sign in with Spotify</button>
         }
