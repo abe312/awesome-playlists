@@ -1,3 +1,24 @@
+## Quick guide:
+#### installing: 
+`yarn && yarn start`
+
+#### deploying: 
+`heroku create --buildpack mars/create-react-app`
+`git push heroku master`
+
+#### for backend:
+go here and follow the instructions:
+`https://github.com/mpj/oauth-bridge-template`
+```bash
+git clone https://github.com/mpj/oauth-bridge-template.git awesome-playlists-backend
+cd awesome-playlists-backend
+yarn
+export SPOTIFY_CLIENT_ID=XXXX
+export SPOTIFY_CLIENT_SECRET=YYYY
+yarn start
+```
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
