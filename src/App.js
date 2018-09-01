@@ -98,14 +98,16 @@ class App extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        serverData: fakeServerData
+        serverData: fakeServerData,
+        filterString: ''
       })
     }, 1000);
-    setTimeout(() => {
-      this.setState({
-        filterString: 'euphoria'
-      })
-    }, 2000);
+    // remove dummy auto filterString (so user can add it on his own)
+    // setTimeout(() => {
+    //   this.setState({
+    //     filterString: ''
+    //   })
+    // }, 2000);
  
   }
   
@@ -113,6 +115,13 @@ class App extends Component {
     let name = "Abhineet";
     let green = "#FF1212";
     let headerStyle = {color: green, 'font-size': '50px'}
+
+    let playlistsToRender = this.state.serverData.user? this.state.serverData.user.playlists
+    .filter(playlist => 
+      playlist.name.toLowerCase().includes(
+        this.state.filterString.toLowerCase())  
+    ) : [];
+
     // let playlistElements = [];
     // if(this.state.serverData.user){
     //   for(let i=0; i<this.state.serverData.user.playlists.length; i++{
@@ -130,8 +139,8 @@ class App extends Component {
           <h1>{this.state.serverData.user.name}'s Playlist</h1>
 
 
-        <PlaylistCounter playlists={this.state.serverData.user.playlists}/> 
-        <HourCounter playlists={this.state.serverData.user.playlists}/>
+        <PlaylistCounter playlists={playlistsToRender}/> 
+        <HourCounter playlists={playlistsToRender}/>
         <Filter onTextChange={text => {
           console.log(text);
           this.setState({filterString: text})}
