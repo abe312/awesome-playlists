@@ -29,6 +29,7 @@
 
 body{
   background-color: darkgrey;
+  font-family: 'Comic Sans';
 }
 h1{
   color: white;
@@ -61,4 +62,10 @@ img{
   height: 80px;
   border-radius: 5%;
   vertical-align: -webkit-baseline-middle;
+}
+
+
+
+input{
+  margin: 10px;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import 'reset-css/reset.css';
 import './App.css';
 // import queryString from 'query-string';
 const queryString = require('query-string');
