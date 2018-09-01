@@ -46,13 +46,15 @@ class Filter extends Component {
 
 class Playlist extends Component {
   render() {
-    return     <div className="white playlist">
-        <img src="" alt=""/>
-        <h3>Playlist name</h3>
+    return <div className="white playlist">
+        {/* <img src="" alt=""/> */}
+        <h3>{this.props.name}</h3>
         <ul>
-          <li>Song 1</li>
+          {/* {this.props.songs} */}
+          {/* <li>Song 1</li>
           <li>Song 2</li>
-          <li>Song 3</li>
+          <li>Song 3</li> */}
+          {this.props.songs.map(song => <li>{song.name}</li> )}
         </ul>
       </div>
   
@@ -105,6 +107,15 @@ class App extends Component {
     let name = "Abhineet";
     let green = "#FF1212";
     let headerStyle = {color: green, 'font-size': '50px'}
+    // let playlistElements = [];
+    // if(this.state.serverData.user){
+    //   for(let i=0; i<this.state.serverData.user.playlists.length; i++{
+    //     let playlist = this.state.serverData.user.playlists[i];
+    //     playlistElements.push(<Playlist playlist={playlist} />);
+    //   }
+    // }
+    // you can't return from the forEach so you can't use forEach here
+
     return (
       <div className="App">
         
@@ -116,11 +127,10 @@ class App extends Component {
         <PlaylistCounter playlists={this.state.serverData.user.playlists}/> 
         <HourCounter playlists={this.state.serverData.user.playlists}/>
         <Filter />
-        <Playlist />
-        <Playlist />
-        <Playlist />
-        <Playlist />
-        <p></p>
+        {this.state.serverData.user.playlists.map(playlist => 
+            <Playlist name={playlist.name} songs={playlist.songs} /> )
+        }
+        <br/>
         </div> : <p>Loading...</p>
         }
       </div>
